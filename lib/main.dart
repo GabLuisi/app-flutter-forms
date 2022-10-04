@@ -7,35 +7,34 @@ void main() => runApp(const PerguntaApp());
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
   var _pontuacaoTotal = 0;
-
-  final List<Map<String, Object>> _perguntas = const [
+  final _perguntas = const [
     {
       'texto': 'Qual é a sua cor favorita?',
       'respostas': [
-        {'texto': 'Preto', 'nota': 10},
-        {'texto': 'Roxo', 'nota': 8},
-        {'texto': 'Vermelho', 'nota': 4},
-        {'texto': 'Azul', 'nota': 7},
+        {'texto': 'Preto', 'pontuacao': 10},
+        {'texto': 'Vermelho', 'pontuacao': 1},
+        {'texto': 'Roxo', 'pontuacao': 3},
+        {'texto': 'Branco', 'pontuacao': 5},
       ],
     },
     {
       'texto': 'Qual é o seu animal favorito?',
       'respostas': [
-        {'texto': 'Elefante', 'nota': 10},
-        {'texto': 'Leão', 'nota': 10},
-        {'texto': 'Touro', 'nota': 9},
-        {'texto': 'Coelho', 'nota': 0},
+        {'texto': 'Elefante', 'pontuacao': 10},
+        {'texto': 'Leão', 'pontuacao': 5},
+        {'texto': 'Leopardo', 'pontuacao': 3},
+        {'texto': 'Coelho', 'pontuacao': 1},
       ],
     },
     {
-      'texto': 'Qual é o sua comida favorita?',
+      'texto': 'Qual é a sua comida favorita?',
       'respostas': [
-        {'texto': 'Lasanha', 'nota': 8},
-        {'texto': 'Parmegiana', 'nota': 10},
-        {'texto': 'Churrasco', 'nota': 9},
-        {'texto': 'Sushi', 'nota': 10},
+        {'texto': 'Parmegiana', 'pontuacao': 10},
+        {'texto': 'Sushi', 'pontuacao': 5},
+        {'texto': 'Churrasco', 'pontuacao': 3},
+        {'texto': 'Salada', 'pontuacao': 1},
       ],
-    },
+    }
   ];
 
   void _responder(int pontuacao) {
@@ -72,7 +71,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
             ? Questionario(
                 perguntas: _perguntas,
                 perguntaSelecionada: _perguntaSelecionada,
-                responder: _responder)
+                quandoResponder: _responder,
+              )
             : Resultado(_pontuacaoTotal, _reiniciarQuestionario),
       ),
     );

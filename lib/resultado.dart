@@ -8,14 +8,14 @@ class Resultado extends StatelessWidget {
       {super.key});
 
   String get fraseResultado {
-    if (pontuacao < 20) {
-      return 'Gosto peculiar!';
-    } else if (pontuacao < 25) {
-      return 'Você tem salvação';
-    } else if (pontuacao < 30) {
-      return 'Tens um bom gosto';
+    if (pontuacao < 8) {
+      return 'Gosto Duvidoso';
+    } else if (pontuacao < 12) {
+      return 'Você tem salvação!';
+    } else if (pontuacao < 16) {
+      return 'Tem bom gosto!';
     } else {
-      return 'Influenciador';
+      return 'Impressionante!';
     }
   }
 
@@ -24,17 +24,23 @@ class Resultado extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Center(
+        Center(
           child: Text(
-            'Obrigado pelas respotas!',
-            style: TextStyle(fontSize: 28, color: Colors.white),
+            fraseResultado,
+            style: const TextStyle(
+                fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
           ),
         ),
-        ElevatedButton(
+        TextButton(
           onPressed: quandoReiniciarQuestionario,
-          child: Text('Voltar ao inicio!',
-              style: TextStyle(fontSize: 18, color: Colors.blueGrey)),
-        )
+          child: const Text(
+            'Reiniciar?',
+            style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.deepPurpleAccent),
+          ),
+        ),
       ],
     );
   }
